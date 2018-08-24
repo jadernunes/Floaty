@@ -1,9 +1,5 @@
 //
 //  Floaty.swift
-//
-//  Created by LeeSunhyoup on 2015. 10. 4..
-//  Copyright © 2015년 kciter. All rights reserved.
-//
 
 import UIKit
 
@@ -37,7 +33,7 @@ open class Floaty: UIView {
     /**
      This object's button size.
      */
-    @objc open var size: CGFloat = 56 {
+    @objc open var size: CGFloat = 80 {
         didSet {
             self.setNeedsDisplay()
             self.recalculateItemsOrigin()
@@ -107,13 +103,13 @@ open class Floaty: UIView {
      The space between the item and item.
      */
     @IBInspectable
-    @objc open var itemSpace: CGFloat = 14
+    @objc open var itemSpace: CGFloat = 40
     
     /**
      Child item's default size.
      */
     @IBInspectable
-    @objc open var itemSize: CGFloat = 42 {
+    @objc open var itemSize: CGFloat = 60 {
         didSet {
             self.items.forEach { item in
                 item.size = self.itemSize
@@ -145,7 +141,7 @@ open class Floaty: UIView {
      Enable/disable shadow.
      */
     @IBInspectable
-    @objc open var hasShadow: Bool = true
+    @objc open var hasShadow: Bool = false
     
     /**
      Child item's default shadow color.
@@ -322,6 +318,7 @@ open class Floaty: UIView {
                            usingSpringWithDamping: 0.55,
                            initialSpringVelocity: 0.3,
                            options: UIViewAnimationOptions(), animations: { () -> Void in
+                            self.buttonImageView.image = R.image.iconButtonClosePayment()
                             self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(self.rotationDegrees), 0.0, 0.0, 1.0)
                             self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(self.rotationDegrees))
                             self.overlayView.alpha = 1
@@ -369,6 +366,7 @@ open class Floaty: UIView {
                            usingSpringWithDamping: 0.6,
                            initialSpringVelocity: 0.8,
                            options: [], animations: { () -> Void in
+                            self.buttonImageView.image = R.image.iconButtonPayment()//TODO: Implement
                             self.plusLayer.transform = CATransform3DMakeRotation(self.degreesToRadians(0), 0.0, 0.0, 1.0)
                             self.buttonImageView.transform = CGAffineTransform(rotationAngle: self.degreesToRadians(0))
                             self.overlayView.alpha = 0
@@ -649,7 +647,7 @@ open class Floaty: UIView {
         buttonImageView.tintColor = plusColor
         buttonImageView.frame = CGRect(
             x: circleLayer.frame.origin.x + (size / 2 - buttonImageView.frame.size.width / 2),
-            y: circleLayer.frame.origin.y + (size / 2 - buttonImageView.frame.size.height / 2),
+            y: circleLayer.frame.origin.y + (size / 2 - buttonImageView.frame.size.height / 2) + 10,
             width: buttonImageView.frame.size.width,
             height: buttonImageView.frame.size.height
         )
@@ -659,7 +657,6 @@ open class Floaty: UIView {
     
     fileprivate func setTintLayer() {
         tintLayer.frame = CGRect(x: circleLayer.frame.origin.x, y: circleLayer.frame.origin.y, width: size, height: size)
-        tintLayer.backgroundColor = UIColor.white.withAlphaComponent(0.2).cgColor
         tintLayer.cornerRadius = size/2
         layer.addSublayer(tintLayer)
     }

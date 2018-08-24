@@ -1,10 +1,6 @@
 //
 //  KCFABManager.swift
 //  KCFloatingActionButton-Sample
-//
-//  Created by LeeSunhyoup on 2015. 10. 13..
-//  Copyright © 2015년 kciter. All rights reserved.
-//
 
 import UIKit
 
@@ -57,8 +53,13 @@ open class FloatyManager: NSObject {
     private var _font: UIFont
     
     public override init() {
+        
         fontDescriptor = UIFont.systemFont(ofSize: 20.0).fontDescriptor
-        _font = UIFont(descriptor: fontDescriptor, size: 20)
+        if let customFont = R.font.hkGroteskBold(size: 12.0) {
+            _font = customFont
+        } else {
+            _font = UIFont(descriptor: fontDescriptor, size: 20)
+        }
     }
     
     open var font: UIFont {

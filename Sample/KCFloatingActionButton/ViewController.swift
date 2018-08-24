@@ -46,11 +46,7 @@ class ViewController: UIViewController, FloatyDelegate {
         floaty.hasShadow = false
         floaty.addItem(title: "I got a title")
         floaty.addItem("I got a icon", icon: UIImage(named: "icShare"))
-        floaty.addItem("I got a handler", icon: UIImage(named: "icMap")) { item in
-            let alert = UIAlertController(title: "Hey", message: "I'm hungry...", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        floaty.addItem("I got a handler", icon: UIImage(named: "icMap"))
         floaty.addItem(item: item)
         floaty.paddingX = self.view.frame.width/2 - floaty.frame.width/2
         floaty.fabDelegate = self

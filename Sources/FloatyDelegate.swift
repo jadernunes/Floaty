@@ -1,10 +1,6 @@
 //
 //  KCFloatingActionButtonDelegate.swift
 //  FAB Testing
-//
-//  Created by Nathan Russak on 2/23/16.
-//  Copyright © 2016 Nathan Russak. All rights reserved.
-//
 
 import Foundation
 

@@ -1,10 +1,6 @@
 //
 //  KCFloatingActionButtonItem.swift
 //  KCFloatingActionButton-Sample
-//
-//  Created by LeeSunhyoup on 2015. 10. 5..
-//  Copyright © 2015년 kciter. All rights reserved.
-//
 
 import UIKit
 
@@ -23,7 +19,7 @@ open class FloatyItem: UIView {
     /**
      This object's button size.
      */
-    @objc open var size: CGFloat = 42 {
+    @objc open var size: CGFloat = 60 {
         didSet {
             self.frame = CGRect(x: 0, y: 0, width: size, height: size)
             titleLabel.frame.origin.y = self.frame.height/2-titleLabel.frame.size.height/2
@@ -67,7 +63,7 @@ open class FloatyItem: UIView {
     @objc open var handler: ((FloatyItem) -> Void)? = nil
 
     @objc open var imageOffset: CGPoint = CGPoint.zero
-    @objc open var imageSize: CGSize = CGSize(width: 25, height: 25) {
+    @objc open var imageSize: CGSize = CGSize(width: 20, height: 20) {
         didSet {
             _iconImageView?.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
             _iconImageView?.center = CGPoint(x: size/2, y: size/2) + imageOffset
@@ -126,13 +122,14 @@ open class FloatyItem: UIView {
         didSet {
             titleLabel.text = title
             titleLabel.sizeToFit()
-            if(titleLabelPosition == .left) {
-                titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
-            } else { //titleLabel will be on right
-                titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
-            }
+//            if(titleLabelPosition == .left) {
+//                titleLabel.frame.origin.x = -titleLabel.frame.size.width - 10
+//            } else { //titleLabel will be on right
+//                titleLabel.frame.origin.x = iconImageView.frame.origin.x + iconImageView.frame.size.width + 20
+//            }
             
-            titleLabel.frame.origin.y = self.size/2-titleLabel.frame.size.height/2
+            titleLabel.frame.origin.x = iconImageView.frame.origin.x - (titleLabel.frame.size.width/2) + 10
+            titleLabel.frame.origin.y = iconImageView.frame.maxY + 30//self.size/2-titleLabel.frame.size.height/2
             
             if FloatyManager.defaultInstance().rtlMode {
                 titleLabel.transform = CGAffineTransform(scaleX: -1.0, y: 1.0);

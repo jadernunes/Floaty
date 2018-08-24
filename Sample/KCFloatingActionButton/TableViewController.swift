@@ -44,18 +44,8 @@ class TableViewController: UITableViewController, FloatyDelegate {
             self.present(alert, animated: true, completion: nil)
             self.fab.close()
         }
-        fab.addItem("titlePosition nil?", icon: UIImage(named: "icShare"), titlePosition: nil) { (item) in
-            let alert = UIAlertController(title: "titlePosition nil", message: "titlePosition nil will be left", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "ok...", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            self.fab.close()
-        }
-        fab.addItem("I got a handler", icon: UIImage(named: "icMap")) { item in
-            let alert = UIAlertController(title: "Hey", message: "I'm hungry...", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Me too", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            self.fab.close()
-        }
+        fab.addItem("titlePosition nil?", icon: UIImage(named: "icShare"))
+        fab.addItem("I got a handler", icon: UIImage(named: "icMap"))
         fab.addItem(item: item)
         fab.sticky = true
         fab.paddingX = self.view.frame.width/2 - fab.frame.width/2
